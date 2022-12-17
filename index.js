@@ -8,19 +8,21 @@ const response = require('./response')
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
+
   db.query('SELECT * FROM users', (error, result) => {
-    // console.log(result)
-    // res.send(result)
     response(200, result, "Get all data from users", res)
   })
+
 })
 
 app.get('/users', (req, res) => {
-  console.log({findId: req.query.id})
+
   const sql = `SELECT name FROM users WHERE id = ${req.query.id}`
+
   db.query(sql, (error, result) => {
     response(200, result, "Show users from id", res)
   })
+  
 })
 
 app.get('/name', (req, res) => {
