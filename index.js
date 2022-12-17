@@ -9,8 +9,8 @@ app.use(bodyParser.json())
 app.get('/', (req, res) => {
   db.query('SELECT * FROM users', (error, result) => {
     console.log(result)
+    res.send(result)
   })
-  res.send('Hello Ryan')
 })
 
 app.get('/name', (req, res) => {
